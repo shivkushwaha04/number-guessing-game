@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- hero heading -->
+    <div class="hero">
+      <i class="ti ti-target-arrow hero-icon" aria-hidden="true"></i>
+      <h1 class="game-title">Number guessing game</h1>
+      <p class="game-tagline">Find the secret number hidden in your chosen range.</p>
+    </div>
+
+    <!-- setup -->
+    <div id="setupSection">
+      <div class="card">
+        <p class="section-label">Set up your game</p>
+        <label style="font-size:13px;color:#5f5e5a;display:block;margin-bottom:8px">
+          Max number — secret will be between 1 and this
+        </label>
+        <div class="input-row">
+          <input type="number" id="maxInput" min="2" max="100000" value="100" placeholder="e.g. 100" />
+          <button class="btn-primary" onclick="startGame()">
+            <i class="ti ti-player-play"></i> Start game
+          </button>
+        </div>
+      </div>
+      <p class="helper-text">Press Enter or click Start to begin</p>
+    </div>
+
+    <!-- play -->
+    <div id="playSection">
+
+      <!-- stats -->
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num" id="attemptCount">0</div>
+          <div class="stat-lbl">Attempts</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="rangeVal">100</div>
+          <div class="stat-lbl">Range (max)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="bestStat">—</div>
+          <div class="stat-lbl">Best score</div>
+        </div>
+      </div>
+
+      <!-- progress -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+
+      <!-- previous guesses -->
+      <div class="chips" id="chipsRow"></div>
+
+      <!-- hint -->
+      <div class="hint" id="hintBar">
+        <i id="hintIcon" class="ti ti-info-circle" aria-hidden="true"></i>
+        <span id="hintText"></span>
+      </div>
+
+      <!-- guess input -->
+      <div class="card" style="margin-bottom:8px">
+        <p class="section-label">Your guess</p>
+        <div class="input-row">
+          <input type="number" id="guessInput" placeholder="Enter a number…" />
+          <button class="btn-primary" onclick="submitGuess()">
+            <i class="ti ti-check"></i> Guess
+          </button>
+        </div>
+      </div>
+
+      <!-- controls -->
+      <div class="btn-row">
+        <button class="btn-danger" onclick="quitGame()">
+          <i class="ti ti-flag"></i> Quit and reveal
+        </button>
+        <button onclick="resetToSetup()" style="margin-left:auto">
+          <i class="ti ti-refresh"></i> New game
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
